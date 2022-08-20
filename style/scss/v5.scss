@@ -69,12 +69,16 @@ noscript {
 
 main {
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  align-items: center;
   height: 100vh;
   width: min(90%, 45rem);
   margin-inline: auto;
+  margin-top: 1rem;
+
+  @media screen and (min-width: 768px) {
+    align-items: center;
+    margin-top: 0;
+  }
 }
 
 input {
@@ -136,7 +140,7 @@ input {
 
 #info {
   cursor: pointer;
-  position: absolute;
+  position: fixed;
   bottom: 2rem;
   right: 2rem;
   width: 32px;
@@ -195,5 +199,87 @@ input {
   img {
     width: 100%;
     height: 100%;
+  }
+}
+
+/* Toasts */
+$bp-tablet: 768px;
+$bp-desktop: 1200px;
+
+.toast_wrapper {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  z-index: 999999;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.5rem;
+  transition-duration: 0.25s;
+
+  @media only screen and (min-width: $bp-tablet) {
+    width: 450px;
+    bottom: 15px;
+    right: 15px;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    width: 525px;
+  }
+}
+
+@keyframes popIn {
+  // light wiggle in both directions
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.5);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-10px) scale(1.1);
+  }
+  100% {
+    transform: translateY(0) scale(1);
+  }
+}
+
+.toast {
+  transform-origin: center;
+  animation: popIn 0.5s ease-in-out forwards;
+  background-color: #fff;
+  position: relative;
+  width: 100%;
+  border-radius: 0;
+  padding: 0.75rem;
+  overflow-y: hidden;
+
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.1rem;
+
+  @media only screen and (min-width: $bp-tablet) {
+    padding: 1.25rem;
+    border-radius: 7px;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    padding: 1.75rem;
+  }
+
+  .toast_close {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    font-size: 1.15rem;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: 500;
+  }
+
+  .toast_title {
+    font-weight: 600;
+    font-size: 1.15rem;
+    font-family: sans-serif;
   }
 }

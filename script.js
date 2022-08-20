@@ -46,9 +46,13 @@ function copyTextToClipboard(text) {
     });
 }
 
+let result = false;
+let c = "";
+
 $(function () {
     let numbers = document.querySelectorAll('[data-number]');
     let input = document.querySelector('#calc');
+
 
     numbers.forEach(element => {
         let number = element.dataset.number;
@@ -78,19 +82,32 @@ $(function () {
         let kc = event.key;
         let button = document.querySelector('[data-number="' + kc + '"]');
 
+        if (kc === "c") {
+            if (result) {
+                copyTextToClipboard(input.value);
+                toast('Ergebnis kopiert', 'Du hast das Ergebnis deiner Rechnung (' + c + ') erfolgreich kopiert.');
+            }else {
+                toast('Kein Ergebnis', 'Du musst erst eine Rechnung berechnen lassen, um das Ergebnis kopieren zu können.');
+            }
+        }
+
+        result = (kc === "=" || kc === "Enter");
+
         if (button != null) {
             button.classList.remove('active');
             input.value += kc;
+            c = input.value;
         } else if (kc === "+" || kc === "-" || kc === "*" || kc === "/") {
             input.value += kc;
+            c = input.value;
         } else if (kc === "=" || kc === "Enter") {
             input.value = calc(input.value);
         } else if (kc === "Backspace") {
             remove();
+            c = input.value;
         } else if (kc === "Escape") {
             input.value = "";
-        } else if (kc === "c") {
-            copyTextToClipboard(input.value);
+            c = input.value;
         }
     });
 
