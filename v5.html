@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Rechner v5</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <script src="jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+            crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="style/css/v5.min.css">
+
+    <script src="jquery-3.6.0.min.js"></script>
+    <script src="script.js" async></script>
+</head>
+<body>
+
+<noscript>
+    <div>
+        <img src="images/error.svg">
+        <h1>Dein Browser unterstützt kein JavaScript</h1>
+        <p>
+            Entweder hast du JavaScript in deinen Browsereinstellungen deaktiviert, oder dein Browser ist nicht aktuell
+            genug und unterstützt somit nicht die Nutzung von Skripten. Bitte update deinen Browser oder <a
+                href="https://enable-javascript.com/" target="_blank">aktiviere JavaScript in den Einstellungen</a>.
+        </p>
+    </div>
+</noscript>
+
+<img src="images/info.svg" alt="Info" id="info">
+
+<div id="info-popup-wrapper">
+    <div>
+        <img id="info-popup-close" src="images/multiply.svg" alt="Schließen"/>
+        <h2>Rechner v5</h2>
+        <p>
+            Dieser Rechner ist ein Werk von Marvin Roßkothen & Steven Lens. Die Technik dahinter besteht zu 100% aus
+            purem JavaScript/jQuery.
+        </p>
+
+        <a class="icon" href="https://github.com/mrvinrsk/Rechner-v5" target="_blank" style="margin-top: 1em;"><img src="images/github.svg" alt="GitHub"></a>
+    </div>
+</div>
+
+<main>
+    <div>
+        <h1>Rechner v5</h1>
+
+        <input type="text" readonly id="calc">
+
+        <div class="flex">
+            <div class="grid">
+                <div class="num-button button" data-number="7"></div>
+                <div class="num-button button" data-number="8"></div>
+                <div class="num-button button" data-number="9"></div>
+                <div class="num-button button" data-number="4"></div>
+                <div class="num-button button" data-number="5"></div>
+                <div class="num-button button" data-number="6"></div>
+                <div class="num-button button" data-number="1"></div>
+                <div class="num-button button" data-number="2"></div>
+                <div class="num-button button" data-number="3"></div>
+                <div class="button" id="back"><img src="images/backspace.svg" loading="lazy" alt="Backspace"></div>
+                <div class="num-button button" data-number="0"></div>
+                <div class="button" data-number="=">=</div>
+            </div>
+
+            <div class="vertical">
+                <div class="num-button button" data-number="+"></div>
+                <div class="num-button button" data-number="-"></div>
+                <div class="num-button button" data-number="*"></div>
+                <div class="num-button button" data-number="/"></div>
+            </div>
+        </div>
+    </div>
+</main>
+
+</body>
+</html>
